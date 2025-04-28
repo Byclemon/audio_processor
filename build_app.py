@@ -12,15 +12,6 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # 图标路径
 icon = os.path.join('assets', 'app_icon.png')
 
-# 如果图标不存在，尝试生成它
-if not os.path.exists(icon):
-    try:
-        import create_icon
-        icon = create_icon.create_icon()
-    except:
-        print("无法创建图标，将使用默认图标")
-        icon = None
-
 # 应用名称
 app_name = "音频批量处理工具"
 
@@ -37,8 +28,8 @@ params = [
     '--log-level=INFO',            # 日志级别
 ]
 
-# 添加图标（如果有）
-if icon and os.path.exists(icon):
+# 添加图标（如果存在）
+if os.path.exists(icon):
     params.append('--icon=%s' % icon)
     print(f"使用图标: {icon}")
 
